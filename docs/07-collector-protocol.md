@@ -1,7 +1,7 @@
 # 采集器协议与内置采集器
 
 > 本仓库的采集器 bin（`viacli-hazards` / `viacli-markets` / `viacli-space` /
-> `viacli-rss` / `viacli-sys`）都实现下面这份协议：从 stdin 读一行 JSON 请求、
+> `viacli-rss` / `viacli-sys` / `viacli-networkdevice`）都实现下面这份协议：从 stdin 读一行 JSON 请求、
 > 向 stdout 写 NDJSON 消息、`--describe` 输出自描述。因此它们既可以被本仓库直接运行，
 > 也可以作为第三方采集器挂到任何兼容的宿主（如 keendeck）下。
 >
@@ -19,6 +19,7 @@
 > | `viacli-space` | 卫星星下点 / 地面站 | CelesTrak、SatNOGS（TinyGS 默认关） |
 > | `viacli-rss` | RSS/Atom 条目 | 内置中文源 + 自定义订阅 |
 > | `viacli-sys` | 本机 CPU/内存/磁盘/网络/温度/进程 | 本机 |
+> | `viacli-networkdevice` | 局域网设备发现 / 端口 / 厂商（自带 SQLite 清点库） | 本机 + `ip`（可选 `nmap`） |
 >
 
 > 本文档是**独立标准**，定义"采集器（Collector）如何与宿主（Host）通讯"。

@@ -9,7 +9,8 @@
 | [03-finance.md](03-finance.md) | Finance 命令 - 金融数据 |
 | [04-qqbot.md](04-qqbot.md) | QQBot 命令 - QQ Bot API |
 | [05-weixin.md](05-weixin.md) | Weixin 命令 - 微信 iLink API |
-| [07-collector-protocol.md](07-collector-protocol.md) | 采集器协议 + 内置采集器（hazards/markets/space/rss/sys） |
+| [07-collector-protocol.md](07-collector-protocol.md) | 采集器协议 + 内置采集器（hazards/markets/space/rss/sys/networkdevice） |
+| [08-networkdevice.md](08-networkdevice.md) | 局域网设备发现（viacli-networkdevice） |
 
 ## 快速导航
 
@@ -36,3 +37,4 @@
 - `viacli-space` - CelesTrak 卫星 + SGP4 / 地面站
 - `viacli-rss` - RSS / Atom 订阅
 - `viacli-sys` - 本机系统信息
+- `viacli-networkdevice` - 局域网设备发现（网段扫描 / 端口 / 厂商）

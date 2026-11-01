@@ -37,7 +37,7 @@ ENV OPENSSL_DIR=/usr \
     RUSTFLAGS="-C target-feature=+crt-static"
 
 # 需要导出的 bin（新增 bin 时同步这里）
-ENV VIACLI_BINS="viacli viacli-weather viacli-finance viacli-weixin viacli-qqbot viacli-fetch viacli-search viacli-hazards viacli-markets viacli-space viacli-rss viacli-sys"
+ENV VIACLI_BINS="viacli viacli-weather viacli-finance viacli-weixin viacli-qqbot viacli-fetch viacli-search viacli-hazards viacli-markets viacli-space viacli-rss viacli-sys viacli-networkdevice"
 
 # 根据目标架构编译
 RUN case "${TARGETARCH}" in \

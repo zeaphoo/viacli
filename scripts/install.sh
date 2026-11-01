@@ -10,7 +10,7 @@ ROOT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 cd "${ROOT_DIR}"
 
 # 能力名 -> crate 目录（crate 名即 cargo install --path 的目录名）
-ALL=(weather finance weixin qqbot chrome_fetch web_search hazards markets space rss system)
+ALL=(weather finance weixin qqbot chrome_fetch web_search hazards markets space rss system networkdevice)
 LEGACY=(viacli)
 
 if [[ $# -gt 0 ]]; then

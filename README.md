@@ -20,6 +20,7 @@
 | `viacli-space` | 太空采集器：CelesTrak TLE + SGP4 / 地面站 | 否 | `crates/space` |
 | `viacli-rss` | RSS / Atom 订阅采集器 | 否 | `crates/rss` |
 | `viacli-sys` | 本机系统信息采集器（CPU/内存/磁盘/网络/温度/进程） | 否 | `crates/system` |
+| `viacli-networkdevice` | 局域网设备发现采集器（网段扫描 / 端口 / 厂商 / 增量清点库） | 否 | `crates/networkdevice` |
 | `viacli` | **兼容入口**：等价于过去的多合一命令，只保留 6 个子命令，不再扩充 | — | `crates/viacli` |
 
 > `viacli` 仅用于向后兼容（`viacli weather ...` 等），新功能一律以独立 bin 交付。
@@ -99,7 +100,8 @@ crates/
 ├── markets/       # bin viacli-markets
 ├── space/         # bin viacli-space
 ├── rss/           # bin viacli-rss
-└── system/        # bin viacli-sys
+├── system/        # bin viacli-sys
+└── networkdevice/ # bin viacli-networkdevice
 docs/              # 使用文档
 scripts/           # install.sh 等
 build.sh           # Docker 多架构构建脚本
@@ -116,7 +118,8 @@ Dockerfile         # musl 静态构建
 - [Finance 命令](docs/03-finance.md)
 - [QQBot 命令](docs/04-qqbot.md)
 - [Weixin 命令](docs/05-weixin.md)
-- [采集器（hazards / markets / space / rss / sys）](docs/07-collector-protocol.md)
+- [采集器（hazards / markets / space / rss / sys / networkdevice）](docs/07-collector-protocol.md)
+- [局域网扫描（viacli-networkdevice）](docs/08-networkdevice.md)
 
 ## 许可证
 

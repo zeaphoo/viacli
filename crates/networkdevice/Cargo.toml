@@ -1,0 +1,36 @@
+[package]
+name = "networkdevice"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "网络设备发现采集器：扫描 IP 网段，识别端口/设备/厂商（遵循 docs/07-collector-protocol.md）"
+
+[[bin]]
+name = "viacli-networkdevice"
+path = "src/main.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror = "2"
+# 异步连接扫描与进程/阻塞任务调度。
+tokio = { workspace = true }
+# 引擎（移植自 toposight）所需：
+chrono = { version = "0.4", default-features = false, features = ["std", "serde", "clock"] }
+csv = "1"
+regex = "1"
+# 进程内 TLS 探测（不做 openssl 子进程）。
+rustls = { version = "0.23", default-features = false, features = ["std", "tls12", "ring", "logging"] }
+x509-parser = "0.16"
+base64 = "0.22"
+rand_core = { version = "0.6", features = ["getrandom"] }
+# 反向 DNS（getnameinfo 的安全封装）。
+dns-lookup = "2"
+# 采集器自带的清点数据库（协议 §5「采集器自管状态」）。
+#   `bundled` 把 SQLite 编进二进制，采集器不需要系统 libsqlite3；
+#   0.39 对应的 libsqlite3-sys 与工作区已有的 sqlx 共用同一份编译产物（0.37.0）。
+rusqlite = { version = "0.39", features = ["bundled"] }
+
+[dev-dependencies]
+tempfile = "3"

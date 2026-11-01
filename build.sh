@@ -8,7 +8,7 @@ BUILDER_NAME="viacli-builder"
 
 # 需要导出的 bin（与 Dockerfile 的 VIACLI_BINS 保持一致）
 BINS=(viacli viacli-weather viacli-finance viacli-weixin viacli-qqbot viacli-fetch viacli-search
-      viacli-hazards viacli-markets viacli-space viacli-rss viacli-sys)
+      viacli-hazards viacli-markets viacli-space viacli-rss viacli-sys viacli-networkdevice)
 
 mkdir -p "${OUT_DIR}"
 
