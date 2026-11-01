@@ -1,0 +1,20 @@
+[package]
+name = "web_search"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "网页搜索功能 - 支持 Bing, Brave, DuckDuckGo"
+
+[dependencies]
+clap = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+chromiumoxide = { version = "0.9", features = ["chromiumoxide_fetcher", "zip8"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+uuid = { version = "1", features = ["v4"] }
+futures-util = "0.3"
+urlencoding = "2"

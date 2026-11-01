@@ -1,0 +1,38 @@
+[package]
+name = "weixin"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "微信 iLink API 客户端"
+
+[dependencies]
+tokio = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+colored = { workspace = true }
+chrono = { workspace = true }
+log = { workspace = true }
+once_cell = { workspace = true }
+async-trait = { workspace = true }
+url = { workspace = true }
+uuid = { workspace = true }
+flate2 = "1"
+qr2term = "0.3"
+directories = "5"
+rand = "0.8"
+base64 = "0.22"
+hex = "0.4"
+sha2 = "0.10"
+aes = "0.8"
+md5 = "0.7"
+urlencoding = "2"
+dirs = "5"
+regex = "1"
+
+cipher = "0.4"
+

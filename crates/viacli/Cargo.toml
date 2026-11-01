@@ -1,0 +1,24 @@
+[package]
+name = "viacli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "统一命令行入口"
+
+[dependencies]
+clap = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+weather = { path = "../weather" }
+finance = { path = "../finance" }
+weixin = { path = "../weixin" }
+qqbot = { path = "../qqbot" }
+chrome_fetch = { path = "../chrome_fetch" }
+web_search = { path = "../web_search" }
+env_logger = "0.11"
+
+[[bin]]
+name = "viacli"
+path = "src/main.rs"

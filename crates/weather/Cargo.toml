@@ -1,0 +1,21 @@
+[package]
+name = "weather"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "天气查询工具 - 无需 API Token"
+
+[dependencies]
+tokio = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+colored = { workspace = true }
+chrono = { workspace = true }
+urlencoding = "2"
+
+

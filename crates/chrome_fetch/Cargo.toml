@@ -1,0 +1,19 @@
+[package]
+name = "chrome_fetch"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Chrome 无头浏览器网页抓取功能"
+
+[dependencies]
+clap = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+chromiumoxide = { version = "0.9", features = ["chromiumoxide_fetcher", "zip8"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+uuid = { version = "1", features = ["v4"] }
+futures-util = "0.3"

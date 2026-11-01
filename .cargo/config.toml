@@ -1,0 +1,31 @@
+[build]
+# 默认目标（可以根据需要修改）
+# target = "x86_64-unknown-linux-gnu"
+
+[target.x86_64-unknown-linux-gnu]
+linker = "gcc"
+
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-linux-gnu-gcc"
+
+[target.x86_64-apple-darwin]
+linker = "cc"
+
+[target.aarch64-apple-darwin]
+linker = "cc"
+
+# 优化编译选项
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+panic = "abort"
+codegen-units = 1
+
+[profile.release-opt]
+inherits = "release"
+opt-level = "z"      # 优化体积
+lto = true
+strip = true
+panic = "abort"
+codegen-units = 1
