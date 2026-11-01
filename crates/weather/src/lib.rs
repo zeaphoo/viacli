@@ -297,3 +297,39 @@ fn output_json(weather: &WeatherInfo, _detailed: bool) -> Result<()> {
 
     Ok(())
 }
+
+// ---------------------------------------------------------------------------
+// 独立 bin（viacli-weather）的命令行入口
+// ---------------------------------------------------------------------------
+
+/// 输出格式
+#[derive(clap::ValueEnum, Clone, Copy, Debug, PartialEq)]
+pub enum OutputFormat {
+    /// 文本格式输出
+    Text,
+    /// JSON 格式输出
+    Json,
+}
+
+/// `viacli-weather` 的命令行参数
+#[derive(clap::Parser, Debug)]
+#[command(name = "viacli-weather")]
+#[command(about = "查询城市天气（无需 API Token）")]
+#[command(version)]
+pub struct WeatherArgs {
+    /// 城市名称 (如: Beijing, Shanghai, Tokyo, London)
+    pub city: String,
+
+    /// 显示详细天气信息
+    #[arg(short, long)]
+    pub detailed: bool,
+
+    /// 输出格式
+    #[arg(long, value_enum, default_value = "text")]
+    pub outformat: OutputFormat,
+}
+
+/// 使用解析好的参数运行（供 `viacli-weather` 独立 bin 调用）
+pub async fn run_with_args(args: WeatherArgs) -> Result<()> {
+    run(&args.city, args.detailed, args.outformat == OutputFormat::Json).await
+}

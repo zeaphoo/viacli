@@ -1,0 +1,16 @@
+[package]
+name = "hazards"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "灾害/环境采集器：USGS 地震 + NWS 天气预警 + NOAA SWPC 空间天气（遵循 docs/07-collector-protocol.md）"
+
+[[bin]]
+name = "viacli-hazards"
+path = "src/main.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+base-http = { path = "../base-http" }

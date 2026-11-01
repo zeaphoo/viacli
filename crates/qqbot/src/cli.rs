@@ -24,7 +24,7 @@ pub enum OutputFormat {
 
 /// QQ Bot CLI 命令
 #[derive(Parser)]
-#[command(name = "qqbot")]
+#[command(name = "viacli-qqbot")]
 #[command(about = "QQ Bot API 命令行工具")]
 #[command(version)]
 pub struct Cli {

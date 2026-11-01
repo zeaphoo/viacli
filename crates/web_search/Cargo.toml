@@ -7,6 +7,10 @@ license.workspace = true
 repository.workspace = true
 description = "网页搜索功能 - 支持 Bing, Brave, DuckDuckGo"
 
+[[bin]]
+name = "viacli-search"
+path = "src/main.rs"
+
 [dependencies]
 clap = { workspace = true }
 anyhow = { workspace = true }

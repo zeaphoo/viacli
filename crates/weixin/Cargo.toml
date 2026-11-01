@@ -7,7 +7,12 @@ license.workspace = true
 repository.workspace = true
 description = "微信 iLink API 客户端"
 
+[[bin]]
+name = "viacli-weixin"
+path = "src/main.rs"
+
 [dependencies]
+env_logger = "0.11"
 tokio = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }
@@ -35,4 +40,7 @@ dirs = "5"
 regex = "1"
 
 cipher = "0.4"
+
+[dev-dependencies]
+tempfile = "3"
 

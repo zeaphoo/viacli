@@ -7,6 +7,10 @@ license.workspace = true
 repository.workspace = true
 description = "Chrome 无头浏览器网页抓取功能"
 
+[[bin]]
+name = "viacli-fetch"
+path = "src/main.rs"
+
 [dependencies]
 clap = { workspace = true }
 anyhow = { workspace = true }

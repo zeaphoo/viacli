@@ -3,7 +3,7 @@
 use anyhow::{anyhow, Result};
 
 /// 斜杠命令
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SlashCommand {
     /// 帮助
     Help,
@@ -117,6 +117,6 @@ mod tests {
     #[test]
     fn test_extract_command_args() {
         assert_eq!(extract_command_args("/help arg1 arg2"), vec!["arg1", "arg2"]);
-        assert_eq!(extract_command_args("/start"), vec![]);
+        assert!(extract_command_args("/start").is_empty());
     }
 }

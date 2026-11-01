@@ -23,7 +23,7 @@ pub enum OutputFormat {
 
 /// 微信 CLI 命令
 #[derive(Parser)]
-#[command(name = "weixin")]
+#[command(name = "viacli-weixin")]
 #[command(about = "微信 iLink API 命令行工具")]
 #[command(version)]
 pub struct Cli {

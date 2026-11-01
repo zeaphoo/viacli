@@ -5,11 +5,15 @@ use serde::{Deserialize, Serialize};
 use std::time::Duration;
 
 #[derive(Parser, Debug)]
+#[command(name = "viacli-fetch")]
+#[command(about = "用无头 Chrome 抓取网页内容")]
+#[command(version)]
 pub struct ChromeFetchArgs {
     /// 要抓取的网页 URL
     pub url: String,
 
     /// 输出格式
+    #[arg(long, value_enum, default_value = "text")]
     pub outformat: OutputFormat,
 
     /// 等待时间（毫秒），用于等待页面加载完成

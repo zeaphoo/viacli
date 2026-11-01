@@ -5,6 +5,9 @@ use serde::{Deserialize, Serialize};
 use std::time::Duration;
 
 #[derive(Parser, Debug)]
+#[command(name = "viacli-search")]
+#[command(about = "网页搜索 - 支持 Bing, Brave, DuckDuckGo")]
+#[command(version)]
 pub struct WebSearchArgs {
     /// 搜索关键词
     pub query: String,

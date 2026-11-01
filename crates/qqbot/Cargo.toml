@@ -7,7 +7,12 @@ license.workspace = true
 repository.workspace = true
 description = "QQ Bot API 客户端"
 
+[[bin]]
+name = "viacli-qqbot"
+path = "src/main.rs"
+
 [dependencies]
+env_logger = "0.11"
 tokio = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }

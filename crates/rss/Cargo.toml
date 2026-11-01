@@ -1,0 +1,26 @@
+[package]
+name = "viacli-rss"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "RSS/Atom 订阅采集器（遵循 docs/07-collector-protocol.md）"
+
+[[bin]]
+name = "viacli-rss"
+path = "src/main.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+# HTTP 客户端：rustls 避免系统 OpenSSL 依赖；blocking 让采集器保持同步、不引入 async 运行时。
+reqwest = { version = "0.12", default-features = false, features = [
+    "rustls-tls",
+    "gzip",
+    "blocking",
+    "charset",
+] }
+# RSS 0.9x/1.0/2.0、Atom、JSON Feed 的统一解析（内部 quick-xml，流式、低内存）。
+# 自己手写 XML 解析会在真实订阅源的方言差异上不断踩坑，这里用成熟解析器。
+feed-rs = "2.4.0"
+chrono = { version = "0.4", default-features = false, features = ["std"] }

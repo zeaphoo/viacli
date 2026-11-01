@@ -1,0 +1,18 @@
+[package]
+name = "viacli-sys"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "本地系统信息采集器（遵循 docs/07-collector-protocol.md）"
+
+[[bin]]
+name = "viacli-sys"
+path = "src/main.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+# 跨平台系统信息（CPU/内存/磁盘/网络/温度/进程）
+# default-features = false 关掉 multithread：macOS 上多线程会明显抬高内存占用
+sysinfo = { version = "0.39.6", default-features = false, features = ["system", "disk", "network", "component"] }

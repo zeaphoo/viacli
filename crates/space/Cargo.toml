@@ -1,0 +1,18 @@
+[package]
+name = "space"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "太空采集器：CelesTrak 卫星(TLE+SGP4) + SatNOGS/TinyGS 地面站（遵循 docs/07-collector-protocol.md）"
+
+[[bin]]
+name = "viacli-space"
+path = "src/main.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+base-http = { path = "../base-http" }
+# 纯 Rust 的 SGP4 轨道传播：把 TLE 算成星下点（ECI→经纬高）。
+sgp4 = "2.4"

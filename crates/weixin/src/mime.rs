@@ -162,13 +162,11 @@ pub fn get_extension_from_content_type_or_url(
     if let Ok(parsed) = url::Url::parse(url) {
         if let Some(path) = parsed.path_segments() {
             if let Some(last) = path.last() {
-                let ext = last
-                    .rsplit('.')
-                    .next()
-                    .unwrap_or("")
-                    .to_lowercase();
-                if !ext.is_empty() {
-                    return ext;
+                // 必须真的存在扩展名分隔点：`/file` 不应被当成扩展名 "file"
+                if let Some((_, ext)) = last.rsplit_once('.') {
+                    if !ext.is_empty() {
+                        return ext.to_lowercase();
+                    }
                 }
             }
         }

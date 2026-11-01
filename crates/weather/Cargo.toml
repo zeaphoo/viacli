@@ -7,6 +7,10 @@ license.workspace = true
 repository.workspace = true
 description = "天气查询工具 - 无需 API Token"
 
+[[bin]]
+name = "viacli-weather"
+path = "src/main.rs"
+
 [dependencies]
 tokio = { workspace = true }
 reqwest = { workspace = true }

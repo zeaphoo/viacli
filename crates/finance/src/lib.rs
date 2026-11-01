@@ -380,3 +380,35 @@ pub fn get_common_symbols() -> Vec<(&'static str, &'static str)> {
         ("^IXIC", "纳斯达克"),
     ]
 }
+
+// ---------------------------------------------------------------------------
+// 独立 bin（viacli-finance）的命令行入口
+// ---------------------------------------------------------------------------
+
+/// 输出格式
+#[derive(clap::ValueEnum, Clone, Copy, Debug, PartialEq)]
+pub enum OutputFormat {
+    /// 文本格式输出
+    Text,
+    /// JSON 格式输出
+    Json,
+}
+
+/// `viacli-finance` 的命令行参数
+#[derive(clap::Parser, Debug)]
+#[command(name = "viacli-finance")]
+#[command(about = "查询金融数据 - 股票、加密货币")]
+#[command(version)]
+pub struct FinanceArgs {
+    /// 股票/加密货币代码 (如: AAPL, BTC-USD, TSLA)
+    pub symbol: String,
+
+    /// 输出格式
+    #[arg(long, value_enum, default_value = "text")]
+    pub outformat: OutputFormat,
+}
+
+/// 使用解析好的参数运行（供 `viacli-finance` 独立 bin 调用）
+pub async fn run_with_args(args: FinanceArgs) -> Result<()> {
+    run(&args.symbol, args.outformat == OutputFormat::Json).await
+}

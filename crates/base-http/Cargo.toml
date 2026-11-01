@@ -1,0 +1,23 @@
+[package]
+name = "base-http"
+version.workspace = true
+edition = "2024"
+license.workspace = true
+repository.workspace = true
+description = "采集器共享基础库：协议消息发送端 + HTTP 客户端（遵循 docs/07-collector-protocol.md）"
+
+[lib]
+name = "base_http"
+path = "src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror = "2"
+# HTTP 客户端：rustls 避免系统 OpenSSL 依赖；blocking 让采集器保持同步、不引入 async 运行时。
+reqwest = { version = "0.12", default-features = false, features = [
+    "rustls-tls",
+    "gzip",
+    "blocking",
+    "charset",
+] }

@@ -1,5 +1,9 @@
 # viacli 多架构编译 Dockerfile
 # 支持: linux/amd64, linux/arm64
+#
+# 产物：每个架构输出一组独立 bin
+#   viacli、viacli-weather、viacli-finance、viacli-weixin、
+#   viacli-qqbot、viacli-fetch、viacli-search（+ 后续 collector bin）
 
 ARG REGISTRY=docker.m.daocloud.io/
 
@@ -32,19 +36,26 @@ ENV OPENSSL_DIR=/usr \
     PKG_CONFIG_ALL_STATIC=1 \
     RUSTFLAGS="-C target-feature=+crt-static"
 
+# 需要导出的 bin（新增 bin 时同步这里）
+ENV VIACLI_BINS="viacli viacli-weather viacli-finance viacli-weixin viacli-qqbot viacli-fetch viacli-search viacli-hazards viacli-markets viacli-space viacli-rss viacli-sys"
+
 # 根据目标架构编译
 RUN case "${TARGETARCH}" in \
         arm64) \
             echo "Building for arm64..." && \
-            cargo build --release --target aarch64-unknown-linux-musl && \
+            cargo build --release --bins --target aarch64-unknown-linux-musl && \
             mkdir -p /out && \
-            cp /build/target/aarch64-unknown-linux-musl/release/viacli /out/viacli \
+            for b in ${VIACLI_BINS}; do \
+                cp /build/target/aarch64-unknown-linux-musl/release/$b /out/$b; \
+            done \
             ;; \
         amd64) \
             echo "Building for amd64..." && \
-            cargo build --release --target x86_64-unknown-linux-musl && \
+            cargo build --release --bins --target x86_64-unknown-linux-musl && \
             mkdir -p /out && \
-            cp /build/target/x86_64-unknown-linux-musl/release/viacli /out/viacli \
+            for b in ${VIACLI_BINS}; do \
+                cp /build/target/x86_64-unknown-linux-musl/release/$b /out/$b; \
+            done \
             ;; \
         *) \
             echo "unsupported TARGETARCH=${TARGETARCH}" >&2; \
@@ -52,8 +63,9 @@ RUN case "${TARGETARCH}" in \
             ;; \
     esac
 
-RUN file /out/viacli && ls -lh /out/viacli
+RUN for b in ${VIACLI_BINS}; do file /out/$b; ls -lh /out/$b; done
 
 FROM scratch AS export
 
-COPY --from=build /out/viacli /viacli
+COPY --from=build /out/ /
+
